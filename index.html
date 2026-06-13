@@ -4,222 +4,698 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Natasha Nayak | Portfolio</title>
+  <title>Natasha Nayak | Strategy & Operations Portfolio</title>
 
   <style>
+    :root {
+      --dark: #0f172a;
+      --navy: #111827;
+      --blue: #2563eb;
+      --purple: #7c3aed;
+      --gold: #f59e0b;
+      --light: #f8fafc;
+      --muted: #64748b;
+      --card: #ffffff;
+      --border: #e5e7eb;
+    }
+
+    * {
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background-color: #f7f7f5;
-      color: #1f2933;
+      font-family: "Inter", "Segoe UI", Arial, sans-serif;
+      background: var(--light);
+      color: var(--dark);
       line-height: 1.6;
     }
 
-    header {
-      background-color: #111827;
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(15, 23, 42, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 16px 8%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    nav .logo {
       color: white;
-      padding: 70px 20px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      font-size: 18px;
+    }
+
+    nav a {
+      color: #e5e7eb;
+      text-decoration: none;
+      margin-left: 22px;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    nav a:hover {
+      color: white;
+    }
+
+    .hero {
+      min-height: 88vh;
+      padding: 90px 8% 70px;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 50px;
+      align-items: center;
+      background:
+        radial-gradient(circle at top left, rgba(124, 58, 237, 0.35), transparent 35%),
+        radial-gradient(circle at bottom right, rgba(37, 99, 235, 0.35), transparent 35%),
+        linear-gradient(135deg, #0f172a 0%, #111827 55%, #1e1b4b 100%);
+      color: white;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      padding: 8px 14px;
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 999px;
+      color: #dbeafe;
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 22px;
+      background: rgba(255,255,255,0.08);
+    }
+
+    .hero h1 {
+      font-size: clamp(42px, 6vw, 74px);
+      line-height: 1.05;
+      margin: 0 0 18px;
+      letter-spacing: -2px;
+    }
+
+    .hero h2 {
+      color: #cbd5e1;
+      font-weight: 500;
+      font-size: 22px;
+      margin: 0 0 24px;
+      max-width: 780px;
+    }
+
+    .hero p {
+      color: #e5e7eb;
+      font-size: 18px;
+      max-width: 720px;
+      margin-bottom: 30px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 20px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 13px 20px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 800;
+      transition: 0.25s ease;
+    }
+
+    .btn-primary {
+      background: white;
+      color: var(--dark);
+    }
+
+    .btn-secondary {
+      border: 1px solid rgba(255,255,255,0.35);
+      color: white;
+      background: rgba(255,255,255,0.08);
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+    }
+
+    .profile-card {
+      background: rgba(255,255,255,0.10);
+      border: 1px solid rgba(255,255,255,0.20);
+      border-radius: 28px;
+      padding: 34px;
+      box-shadow: 0 24px 80px rgba(0,0,0,0.35);
+      backdrop-filter: blur(12px);
+    }
+
+    .initials {
+      width: 96px;
+      height: 96px;
+      border-radius: 28px;
+      background: linear-gradient(135deg, var(--blue), var(--purple));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 34px;
+      font-weight: 900;
+      margin-bottom: 22px;
+    }
+
+    .profile-card h3 {
+      font-size: 26px;
+      margin: 0 0 10px;
+    }
+
+    .profile-card p {
+      color: #dbeafe;
+      margin: 0 0 20px;
+    }
+
+    .mini-list {
+      display: grid;
+      gap: 12px;
+      margin-top: 22px;
+    }
+
+    .mini-item {
+      padding: 14px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      color: #f8fafc;
+      font-weight: 650;
+    }
+
+    section {
+      padding: 75px 8%;
+    }
+
+    .section-title {
+      max-width: 760px;
+      margin-bottom: 36px;
+    }
+
+    .section-title span {
+      color: var(--blue);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 1.4px;
+      font-size: 13px;
+    }
+
+    .section-title h2 {
+      font-size: clamp(32px, 4vw, 48px);
+      margin: 8px 0 14px;
+      letter-spacing: -1.2px;
+    }
+
+    .section-title p {
+      color: var(--muted);
+      font-size: 18px;
+      margin: 0;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+      margin-top: -45px;
+      position: relative;
+      z-index: 5;
+      padding: 0 8%;
+    }
+
+    .stat {
+      background: white;
+      padding: 24px;
+      border-radius: 20px;
+      box-shadow: 0 12px 40px rgba(15,23,42,0.12);
+      border: 1px solid var(--border);
+    }
+
+    .stat h3 {
+      margin: 0;
+      font-size: 30px;
+      color: var(--blue);
+    }
+
+    .stat p {
+      margin: 6px 0 0;
+      color: var(--muted);
+      font-weight: 650;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .card {
+      background: var(--card);
+      padding: 28px;
+      border-radius: 24px;
+      border: 1px solid var(--border);
+      box-shadow: 0 12px 35px rgba(15, 23, 42, 0.08);
+      transition: 0.25s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-7px);
+      box-shadow: 0 18px 45px rgba(15, 23, 42, 0.14);
+    }
+
+    .card h3 {
+      margin-top: 0;
+      font-size: 22px;
+      line-height: 1.25;
+    }
+
+    .card p {
+      color: var(--muted);
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 7px 11px;
+      margin: 5px 5px 0 0;
+      border-radius: 999px;
+      background: #eff6ff;
+      color: #1d4ed8;
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .about-box {
+      background: white;
+      border-radius: 28px;
+      padding: 36px;
+      border: 1px solid var(--border);
+      box-shadow: 0 12px 40px rgba(15, 23, 42, 0.08);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 34px;
+      align-items: start;
+    }
+
+    .about-box p {
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .highlight {
+      padding: 18px;
+      border-left: 4px solid var(--blue);
+      background: #f8fafc;
+      border-radius: 14px;
+      margin-bottom: 14px;
+      font-weight: 700;
+    }
+
+    .experience {
+      background: #f1f5f9;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 18px;
+    }
+
+    .timeline-item {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 24px;
+      display: grid;
+      grid-template-columns: 0.9fr 2fr;
+      gap: 24px;
+      box-shadow: 0 8px 28px rgba(15,23,42,0.06);
+    }
+
+    .timeline-item h3 {
+      margin: 0 0 5px;
+    }
+
+    .timeline-item .company {
+      color: var(--blue);
+      font-weight: 900;
+    }
+
+    .timeline-item p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .contact {
+      background: linear-gradient(135deg, #0f172a, #1e1b4b);
+      color: white;
       text-align: center;
     }
 
-    header h1 {
+    .contact h2 {
       font-size: 42px;
-      margin-bottom: 10px;
+      margin-bottom: 14px;
     }
 
-    header h2 {
-      font-size: 20px;
-      font-weight: 400;
-      margin-bottom: 20px;
-      color: #d1d5db;
-    }
-
-    header p {
+    .contact p {
+      color: #cbd5e1;
       max-width: 700px;
       margin: 0 auto 30px;
       font-size: 18px;
     }
 
-    .button {
-      display: inline-block;
-      padding: 12px 20px;
-      margin: 8px;
-      background-color: #ffffff;
-      color: #111827;
-      text-decoration: none;
-      border-radius: 6px;
-      font-weight: bold;
-    }
-
-    section {
-      max-width: 1000px;
-      margin: 0 auto;
-      padding: 50px 20px;
-    }
-
-    h3 {
-      font-size: 28px;
-      margin-bottom: 20px;
-      color: #111827;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 24px;
-    }
-
-    .card {
-      background-color: white;
-      padding: 24px;
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-    }
-
-    .card h4 {
-      margin-top: 0;
-      font-size: 20px;
-      color: #111827;
-    }
-
-    .tag {
-      display: inline-block;
-      background-color: #e5e7eb;
-      color: #374151;
-      padding: 5px 10px;
-      border-radius: 20px;
-      font-size: 13px;
-      margin: 4px 4px 4px 0;
-    }
-
     footer {
+      background: #020617;
+      color: #94a3b8;
       text-align: center;
-      padding: 30px 20px;
-      background-color: #111827;
-      color: white;
+      padding: 24px;
+      font-size: 14px;
     }
 
-    footer a {
-      color: white;
-      font-weight: bold;
+    @media (max-width: 900px) {
+      nav {
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      nav a {
+        margin: 0 8px;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+        padding-top: 70px;
+      }
+
+      .stats {
+        grid-template-columns: repeat(2, 1fr);
+        margin-top: 0;
+        padding-top: 30px;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .about-box {
+        grid-template-columns: 1fr;
+      }
+
+      .timeline-item {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .stats {
+        grid-template-columns: 1fr;
+      }
+
+      nav div:last-child {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px;
+      }
+
+      nav a {
+        font-size: 13px;
+      }
     }
   </style>
 </head>
 
 <body>
 
-  <header>
-    <h1>Natasha Nayak</h1>
-    <h2>MBA | Strategy, Operations, Pricing & Business Analytics</h2>
-
-    <p>
-      I build data-backed strategies, scalable processes, and business solutions
-      that improve growth, efficiency, and decision-making.
-    </p>
-
-    <a class="button" href="#projects">View Projects</a>
-    <a class="button" href="#contact">Contact Me</a>
-  </header>
-
-  <section id="about">
-    <h3>About</h3>
-    <p>
-      I am an MBA graduate from Simon Business School at the University of Rochester,
-      with experience across corporate strategy, business excellence, pricing,
-      operations, and analytics. My work has included centralized reporting systems,
-      go-to-market strategy, pricing models, process improvement, stakeholder management,
-      and business performance initiatives.
-    </p>
-
-    <p>
-      I am especially interested in roles where strategy meets execution, including
-      business operations, customer success strategy, pricing strategy, program management,
-      and growth analytics.
-    </p>
-  </section>
-
-  <section id="projects">
-    <h3>Featured Projects</h3>
-
-    <div class="grid">
-
-      <div class="card">
-        <h4>Subscription Pricing Strategy</h4>
-        <p>
-          Developed a pricing and subscription strategy for a life sciences portfolio,
-          focused on customer lifetime value, recurring revenue, and commercial growth.
-        </p>
-        <span class="tag">Pricing Strategy</span>
-        <span class="tag">Market Research</span>
-        <span class="tag">Business Modeling</span>
-      </div>
-
-      <div class="card">
-        <h4>Enterprise KPI Reporting System</h4>
-        <p>
-          Supported centralized reporting across 11 business verticals, improving
-          business visibility, reporting speed, and data accuracy for leadership decisions.
-        </p>
-        <span class="tag">Corporate Strategy</span>
-        <span class="tag">KPI Reporting</span>
-        <span class="tag">Analytics</span>
-      </div>
-
-      <div class="card">
-        <h4>Business Excellence Program</h4>
-        <p>
-          Contributed to process improvement initiatives across large-scale manufacturing
-          operations using TQM, Kaizen, QCC, and project management methods.
-        </p>
-        <span class="tag">Operations</span>
-        <span class="tag">Process Improvement</span>
-        <span class="tag">TQM</span>
-      </div>
-
+  <nav>
+    <div class="logo">Natasha Nayak</div>
+    <div>
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
     </div>
-  </section>
+  </nav>
 
-  <section id="skills">
-    <h3>Skills</h3>
+  <main>
+    <section class="hero">
+      <div>
+        <span class="eyebrow">Strategy • Operations • Pricing • Analytics</span>
+        <h1>Turning complex business problems into structured, measurable impact.</h1>
+        <h2>MBA | Strategy, Operations, Pricing & Business Analytics</h2>
+        <p>
+          I build data-backed strategies, scalable processes, and business solutions that improve
+          growth, efficiency, reporting, and decision-making across teams.
+        </p>
 
-    <div class="grid">
-
-      <div class="card">
-        <h4>Strategy</h4>
-        <p>GTM Strategy, Pricing Strategy, Market Research, Competitive Analysis, Business Planning</p>
+        <div class="hero-buttons">
+          <a class="btn btn-primary" href="#projects">View Projects</a>
+          <a class="btn btn-secondary" href="#contact">Get in Touch</a>
+        </div>
       </div>
 
-      <div class="card">
-        <h4>Operations</h4>
-        <p>Process Improvement, Program Management, TQM, Kaizen, QCC, Workflow Design</p>
-      </div>
+      <div class="profile-card">
+        <div class="initials">NN</div>
+        <h3>Natasha Nayak</h3>
+        <p>
+          MBA graduate from Simon Business School with experience across corporate strategy,
+          business excellence, GTM, pricing, operations, and analytics.
+        </p>
 
-      <div class="card">
-        <h4>Analytics</h4>
-        <p>Excel, Tableau, Power BI, KPI Dashboards, Business Modeling, Reporting Systems</p>
+        <div class="mini-list">
+          <div class="mini-item">MBA, Simon Business School</div>
+          <div class="mini-item">Corporate Strategy & Operations</div>
+          <div class="mini-item">Pricing, GTM & Business Analytics</div>
+          <div class="mini-item">Process Improvement & TQM</div>
+        </div>
       </div>
+    </section>
 
+    <div class="stats">
+      <div class="stat">
+        <h3>11</h3>
+        <p>Business verticals supported</p>
+      </div>
+      <div class="stat">
+        <h3>500+</h3>
+        <p>Metrics centralized</p>
+      </div>
+      <div class="stat">
+        <h3>$10M+</h3>
+        <p>Operational savings supported</p>
+      </div>
+      <div class="stat">
+        <h3>4x</h3>
+        <p>Dean’s List recognition</p>
+      </div>
     </div>
-  </section>
 
-  <section id="contact">
-    <h3>Contact</h3>
-    <p>
-      I am currently exploring opportunities in strategy, operations, pricing,
-      customer success strategy, program management, and business analytics.
-    </p>
+    <section id="about">
+      <div class="section-title">
+        <span>About</span>
+        <h2>Business strategy with an execution mindset.</h2>
+        <p>
+          My work sits at the intersection of strategy, operations, analytics, and stakeholder management.
+        </p>
+      </div>
 
-    <p>
-      LinkedIn: https://www.linkedin.com/in/natashasunilnayak/
-    </p>
+      <div class="about-box">
+        <div>
+          <p>
+            I am an MBA graduate from Simon Business School at the University of Rochester,
+            with experience across corporate strategy, business excellence, pricing,
+            operations, and analytics.
+          </p>
+          <p>
+            My work has included centralized reporting systems, investor-facing materials,
+            go-to-market strategy, pricing models, process improvement, compliance workflows,
+            and cross-functional business performance initiatives.
+          </p>
+        </div>
 
-    <p>
-      Email: natashasunilnayak@gmail.com
-    </p>
-  </section>
+        <div>
+          <div class="highlight">I enjoy roles where strategy meets execution.</div>
+          <div class="highlight">I use data to structure ambiguity and support better decisions.</div>
+          <div class="highlight">I bring experience across both corporate and operational environments.</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="section-title">
+        <span>Featured Projects</span>
+        <h2>Selected work across strategy, operations, pricing, and analytics.</h2>
+        <p>
+          Project details are summarized at a high level to protect confidential information.
+        </p>
+      </div>
+
+      <div class="grid">
+        <div class="card">
+          <h3>Subscription Pricing Strategy for Life Sciences Portfolio</h3>
+          <p>
+            Developed a pricing and subscription strategy focused on customer lifetime value,
+            recurring revenue, and commercial growth opportunities.
+          </p>
+          <span class="tag">Pricing Strategy</span>
+          <span class="tag">Market Research</span>
+          <span class="tag">Business Modeling</span>
+        </div>
+
+        <div class="card">
+          <h3>Enterprise KPI Reporting System Across 11 Verticals</h3>
+          <p>
+            Supported centralized business reporting across 500+ metrics to improve visibility,
+            reporting speed, and leadership decision-making.
+          </p>
+          <span class="tag">Corporate Strategy</span>
+          <span class="tag">KPI Reporting</span>
+          <span class="tag">Analytics</span>
+        </div>
+
+        <div class="card">
+          <h3>Business Excellence Program Driving Operational Savings</h3>
+          <p>
+            Contributed to TQM, Kaizen, QCC, and process improvement initiatives across
+            large-scale manufacturing operations.
+          </p>
+          <span class="tag">Operations</span>
+          <span class="tag">TQM</span>
+          <span class="tag">Process Improvement</span>
+        </div>
+
+        <div class="card">
+          <h3>GTM and Pricing Strategy for Consumer Skincare Brand</h3>
+          <p>
+            Built recommendations across pricing, channel strategy, inventory planning,
+            and growth execution for an emerging consumer brand.
+          </p>
+          <span class="tag">GTM Strategy</span>
+          <span class="tag">Consumer Growth</span>
+          <span class="tag">Pricing</span>
+        </div>
+
+        <div class="card">
+          <h3>Growth Analytics and BI Strategy for Digital Platform</h3>
+          <p>
+            Used business intelligence reporting and marketing analysis to support user growth,
+            revenue expansion, and post-launch improvements.
+          </p>
+          <span class="tag">BI</span>
+          <span class="tag">Growth Analytics</span>
+          <span class="tag">Marketing Strategy</span>
+        </div>
+
+        <div class="card">
+          <h3>Operational Workflow Design for Program Expansion</h3>
+          <p>
+            Designed process trackers, SOPs, onboarding workflows, and operational plans
+            to support service delivery and program development.
+          </p>
+          <span class="tag">Program Operations</span>
+          <span class="tag">Workflow Design</span>
+          <span class="tag">SOPs</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="experience" id="experience">
+      <div class="section-title">
+        <span>Experience</span>
+        <h2>Professional experience built around measurable business outcomes.</h2>
+      </div>
+
+      <div class="timeline">
+        <div class="timeline-item">
+          <div>
+            <h3>Corporate Strategy</h3>
+            <div class="company">Mahindra First Choice Wheels</div>
+          </div>
+          <p>
+            Supported centralized reporting, investor-facing materials, quality initiatives,
+            and leadership decision-making across multiple business verticals.
+          </p>
+        </div>
+
+        <div class="timeline-item">
+          <div>
+            <h3>Business Excellence</h3>
+            <div class="company">JSW Steel</div>
+          </div>
+          <p>
+            Managed process improvement, Kaizen, QCC, TQM, project tracking, and award submission
+            initiatives across manufacturing operations.
+          </p>
+        </div>
+
+        <div class="timeline-item">
+          <div>
+            <h3>Business Intelligence</h3>
+            <div class="company">Ventures World LLP</div>
+          </div>
+          <p>
+            Built BI reports and supported marketing strategy, user growth, revenue improvement,
+            and product performance analysis.
+          </p>
+        </div>
+
+        <div class="timeline-item">
+          <div>
+            <h3>MBA Projects & Consulting</h3>
+            <div class="company">Simon Business School</div>
+          </div>
+          <p>
+            Worked on pricing, GTM, customer lifetime value, subscription strategy,
+            market research, and business strategy projects.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="section-title">
+        <span>Skills</span>
+        <h2>Where I create value.</h2>
+      </div>
+
+      <div class="grid">
+        <div class="card">
+          <h3>Strategy</h3>
+          <p>GTM Strategy, Pricing Strategy, Market Research, Competitive Analysis, Business Planning, Investor Materials</p>
+        </div>
+
+        <div class="card">
+          <h3>Operations</h3>
+          <p>Process Improvement, Program Management, Workflow Design, TQM, Kaizen, QCC, Compliance Tracking</p>
+        </div>
+
+        <div class="card">
+          <h3>Analytics</h3>
+          <p>Excel, Tableau, Power BI, KPI Dashboards, Business Modeling, Forecasting, Reporting Systems</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <h2>Let’s connect.</h2>
+      <p>
+        I am currently exploring opportunities in strategy, operations, pricing,
+        customer success strategy, program management, and business analytics.
+      </p>
+
+      <div class="hero-buttons" style="justify-content: center;">
+        <a class="btn btn-primary" href="https://www.linkedin.com/" target="_blank">LinkedIn</a>
+        <a class="btn btn-secondary" href="mailto:your-email@example.com">Email Me</a>
+      </div>
+    </section>
+  </main>
 
   <footer>
-    <p>© 2026 Natasha Nayak</p>
+    © 2026 Natasha Nayak. Built with GitHub Pages.
   </footer>
 
 </body>
